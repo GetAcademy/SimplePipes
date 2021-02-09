@@ -16,6 +16,7 @@
     <script>
         // model
         var values;
+        var size = 5;
 
         // view
         function updateView() { }
@@ -46,6 +47,25 @@
             var expected = 0;
             var actual = values[2];
             assert.equal(actual, expected);
+        });
+
+        QUnit.test('init til kun ╭', function (assert) {
+            // arrange
+            values = [];
+
+            // act
+            init(2);
+
+            // assert
+            var expected = [
+                2,2,2,2,2,
+                2,2,2,2,2,
+                2,2,2,2,2,
+                2,2,2,2,2,
+                2,2,2,2,2,
+            ];
+            var actual = values;
+            assert.deepEqual(actual, expected);
         });
     </script>
 </body>

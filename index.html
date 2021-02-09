@@ -10,7 +10,8 @@
             font-size: 80px;
             user-select: none;
         }
-        #app{
+
+        #grid {
             display: grid;
             grid-template-columns: repeat(5, 75px);
         }
@@ -26,6 +27,7 @@
         //             012345
         var symbols = '┃━╭╮╰╯';
         var size = 5;
+        var selectedSymbolIndex;
         var values = [
             1, 1, 2, 3, 4,
             5, 0, 1, 2, 3,
@@ -37,13 +39,30 @@
         // view
         updateView();
         function updateView() {
-            var html = '';
+            var symbolsHtml = '';
             for (var i = 0; i < values.length; i++) {
                 var value = values[i];
                 var symbol = symbols[value];
-                html += `<div onclick="changeSymbol(${i})">${symbol}</div>`;
+                symbolsHtml += `<div onclick="changeSymbol(${i})">${symbol}</div>`;
             }
-            document.getElementById('app').innerHTML = html;
+
+            var optionsHtml = '';
+            for (var i = 0; i < symbols.length; i++) {
+                var selected = '';
+                if (selectedSymbolIndex == i) selected = 'selected';
+                optionsHtml += `<option ${selected} value="${i}">${symbols[i]}</option>`;
+            }
+
+            document.getElementById('app').innerHTML = `
+                <button onclick="init(2)">init</button>
+                <select onchange="selectedSymbolIndex = this.value">
+                    ${optionsHtml}
+                </select>
+                <div id="grid">
+                    ${symbolsHtml}
+                </div>
+            
+            `;
         }
     </script>
 

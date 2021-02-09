@@ -7,3 +7,10 @@ function changeSymbol(index) {
     values[index] = (values[index] + 1) % 6;
     updateView();
 }
+
+function init() {
+    for (var i = 0; i < size*size; i++) {
+        values[i] = selectedSymbolIndex;
+    }
+    updateView();
+}
