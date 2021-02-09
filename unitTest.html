@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Test Suite</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.14.0.css">
+    <script src="js/controller.js"></script>
+</head>
+
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="https://code.jquery.com/qunit/qunit-2.14.0.js"></script>
+    <script>
+        // model
+        var values;
+
+        // view
+        function updateView() { }
+
+        QUnit.test('går fra 0 til 1', function (assert) {
+            // arrange
+            // index  0  1  2  3  4
+            values = [3, 3, 0, 3, 3];
+
+            // act
+            changeSymbol(2);
+
+            // assert
+            var expected = 1;
+            var actual = values[2];
+            assert.equal(actual, expected);
+        });
+
+        QUnit.test('går fra 5 til 0', function (assert) {
+            // arrange
+            // index  0  1  2  3  4
+            values = [3, 3, 5, 3, 3];
+
+            // act
+            changeSymbol(2);
+
+            // assert
+            var expected = 0;
+            var actual = values[2];
+            assert.equal(actual, expected);
+        });
+    </script>
+</body>
+
+</html>

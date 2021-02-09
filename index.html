@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        div {
+            font-size: 80px;
+            user-select: none;
+        }
+        #app{
+            display: grid;
+            grid-template-columns: repeat(5, 75px);
+        }
+    </style>
+    <script src="js/controller.js"></script>
 </head>
+
 <body>
+    <div id="app"></div>
     <script>
         // model
 
@@ -13,14 +27,26 @@
         var symbols = '┃━╭╮╰╯';
         var size = 5;
         var values = [
-            0, 1, 2, 3, 4, 
-            5, 0, 1, 2, 3, 
-            4, 5, 0, 1, 2, 
-            3, 4, 5, 0, 1, 
-            2, 3, 4, 5, 0, 
+            1, 1, 2, 3, 4,
+            5, 0, 1, 2, 3,
+            4, 5, 0, 1, 2,
+            3, 4, 5, 0, 1,
+            2, 3, 4, 5, 0,
         ];
 
+        // view
+        updateView();
+        function updateView() {
+            var html = '';
+            for (var i = 0; i < values.length; i++) {
+                var value = values[i];
+                var symbol = symbols[value];
+                html += `<div onclick="changeSymbol(${i})">${symbol}</div>`;
+            }
+            document.getElementById('app').innerHTML = html;
+        }
     </script>
-    
+
 </body>
+
 </html>
