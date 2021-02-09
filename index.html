@@ -48,8 +48,9 @@
 
             var optionsHtml = '';
             for (var i = 0; i < symbols.length; i++) {
-                var selected = '';
-                if (selectedSymbolIndex == i) selected = 'selected';
+                // var selected = '';
+                // if (selectedSymbolIndex == i) selected = 'selected';
+                var selected = selectedSymbolIndex == i ? 'selected' : '';
                 optionsHtml += `<option ${selected} value="${i}">${symbols[i]}</option>`;
             }
 
